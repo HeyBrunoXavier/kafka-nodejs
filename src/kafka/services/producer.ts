@@ -1,13 +1,11 @@
 import kafka from "../index";
-
-
 const producer = kafka.producer();
 
 export async function sendMessage(message: string) {
   try {
     await producer.connect();
     const recordMetadata = await producer.send({
-      topic: 'topic-dev',
+      topic: 'status_products',
       messages: [{ value: message }],
     });
      

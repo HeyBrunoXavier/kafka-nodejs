@@ -6,7 +6,7 @@ const consumer = kafka.consumer({
 });
 
 let isConsumerRunning = false;
-const messages: { topic: string; value: string; }[] = [] ;
+const messages: { topic: string; value: string | undefined; }[] = [] ;
 
 export async function runConsumer() {
   if (isConsumerRunning) {
@@ -15,7 +15,7 @@ export async function runConsumer() {
   
   try {
     await consumer.connect();    
-    await consumer.subscribe({ topic: 'topic-dev', fromBeginning: true });
+    await consumer.subscribe({ topic: 'status_products', fromBeginning: true });
     await consumer.run({
       eachMessage: async ({ topic, message }) => {
         messages.push({

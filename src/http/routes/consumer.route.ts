@@ -1,4 +1,4 @@
-import { FastifyInstance } from 'fastify';
+import type { FastifyInstance } from 'fastify';
 import { getMessage } from '../../kafka/services/consumer';
 
 export async function consumerRoute(app: FastifyInstance) {
